@@ -10,7 +10,7 @@ import {
   Grid
 } from '@mui/material';
 import GameCard from './modules/UI/Card/GameCard';
-import { fetchFreeGames } from './api/epicService';
+import { fetchFreeGames } from '../api/epicService';
 import { getAppTheme } from './theme';
 import type { EpicGame } from './types/epic';
 
