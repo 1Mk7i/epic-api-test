@@ -1,16 +1,12 @@
-import apiClient from './apiClient';
+import axios from 'axios';
 import type { EpicGame } from '../types/epic';
-
-const PROXY = 'https://corsproxy.io/?';
-const EPIC_URL = 'https://store-site-backend-static.ak.epicgames.com/freeGamesPromotions?locale=uk-UA&country=UA&allowCountries=UA';
 
 export const fetchFreeGames = async (): Promise<EpicGame[]> => {
   try {
-    const response = await apiClient.get(`${PROXY}${encodeURIComponent(EPIC_URL)}`);
-    
+    const response = await axios.get('/api/get-games');
     return response.data.data.Catalog.searchStore.elements;
   } catch (error) {
-    console.error("Помилка при отриманні ігор:", error);
+    console.error("API Error:", error);
     throw error;
   }
 };
